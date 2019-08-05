@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <link href="https://fonts.googleapis.com/css?family=Blinker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
@@ -10,13 +11,21 @@
   <body>
     <div id="app">
       <h1>To Do List</h1>
-      <form @submit="saveNewItem">
+      <form>
         <input type="text" v-model="newItem"/>
-        <input type="submit"/>
+
+        <input type="radio" name="pando" id="high" value="High" v-model="picked">
+        <label for="high">High</label>
+
+        <input type="radio"  name="pando" id="low" value="Low" v-model="picked">
+        <label for="low">Low</label>
+
+        <button v-on:click="saveNewItem">Save Item</button>
 
       </form>
       <ul>
-        <li v-for="item in items">{{ item }}</li>
+        <li v-for="item in items">{{ item.name }} <br/> Priority: {{ item.priority}}</li>
+
       </ul>
 
     </div>
